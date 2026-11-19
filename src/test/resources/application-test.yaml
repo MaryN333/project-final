@@ -4,7 +4,16 @@ spring:
     import: optional:file:.env[.properties]
   init:
     mode: always
-  datasource:
-    url: jdbc:postgresql://localhost:5433/jira-test
-    username: ${TEST_DB_USER}
-    password: ${TEST_DB_PASSWORD}
+#  datasource:
+#    url: jdbc:postgresql://localhost:5433/jira-test
+#    username: ${TEST_DB_USER}
+#    password: ${TEST_DB_PASSWORD}
+
+  liquibase:
+    enabled: false
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/changelog-h2.sql
+      data-locations: classpath:data.sql
